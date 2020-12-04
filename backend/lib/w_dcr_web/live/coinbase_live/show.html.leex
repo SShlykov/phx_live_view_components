@@ -1,0 +1,32 @@
+<h1>Show Coinbase</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, WDcrWeb.CoinbaseLive.FormComponent,
+    id: @coinbase.id,
+    title: @page_title,
+    action: @live_action,
+    coinbase: @coinbase,
+    return_to: Routes.coinbase_show_path(@socket, :show, @coinbase) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Coin:</strong>
+    <%= @coinbase.coin_id %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @coinbase.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @coinbase.description %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.coinbase_show_path(@socket, :edit, @coinbase), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.coinbase_index_path(@socket, :index) %></span>

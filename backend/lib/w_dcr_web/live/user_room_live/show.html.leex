@@ -1,0 +1,17 @@
+<h1>Show User room</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, WDcrWeb.UserRoomLive.FormComponent,
+    id: @user_room.id,
+    title: @page_title,
+    action: @live_action,
+    user_room: @user_room,
+    return_to: Routes.room_show_path(@socket, :show, @user_room) %>
+<% end %>
+
+<ul>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.room_show_path(@socket, :edit, @user_room), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.room_index_path(@socket, :index) %></span>

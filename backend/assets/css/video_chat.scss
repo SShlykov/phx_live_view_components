@@ -1,0 +1,24 @@
+#camera{
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.scaled-camera {
+    transform: scale(0.6);
+}
+.camera_container {
+    position: relative;
+    width: 1280px;
+    height: 720px;
+}
+canvas#objects {
+    position: absolute;
+    width: 1280px;
+    height: 720px;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}

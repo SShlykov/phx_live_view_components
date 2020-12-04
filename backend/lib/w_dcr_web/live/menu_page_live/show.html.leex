@@ -1,0 +1,32 @@
+<h1>Show Page</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, WDcrWeb.MenuPageLive.FormComponent,
+    id: @menu_page.id,
+    title: @menu_page_title,
+    action: @live_action,
+    menu_page: @menu_page,
+    return_to: Routes.menu_page_show_path(@socket, :show, @menu_page) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @menu_page.name %>
+  </li>
+
+  <li>
+    <strong>Icon:</strong>
+    <%= @menu_page.icon %>
+  </li>
+
+  <li>
+    <strong>Access:</strong>
+    <%= @menu_page.access %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.menu_page_show_path(@socket, :edit, @menu_page), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.menu_page_index_path(@socket, :index) %></span>

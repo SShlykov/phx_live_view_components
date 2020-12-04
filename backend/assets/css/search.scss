@@ -1,0 +1,12 @@
+.word-container{
+    margin-top: 40px;
+    &>.word-difinitions{
+        margin: 20px 0;
+        background-color: #e2e2e2;
+        border-radius: 15px;
+        padding: 20px 10px;
+        &>.word-difinition__difinition{
+            margin: 10px 0;
+        }
+    }
+}

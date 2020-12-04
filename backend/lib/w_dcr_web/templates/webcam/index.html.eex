@@ -1,0 +1,5 @@
+<button id="start_stop">Start</button>
+<div class="camera-container scaled-camera">
+    <div id="camera"></div>
+    <canvas id="objects" width="1280" height="720"></canvas>
+</div>

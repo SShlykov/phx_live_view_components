@@ -1,0 +1,43 @@
+<h1>Listing Pages</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, WDcrWeb.MenuPageLive.FormComponent,
+    id: @menu_page.id || :new,
+    title: @menu_page_title,
+    action: @live_action,
+    menu_page: @menu_page,
+    return_to: Routes.menu_page_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Иконка</th>
+      <th>Доступ</th>
+      <th>Ссылка</th>
+      <th>Блок</th>
+
+      <th>Управление</th>
+    </tr>
+  </thead>
+  <tbody id="menu_pages">
+    <%= for menu_page <- @menu_pages do %>
+      <tr id="menu_page-<%= menu_page.id %>">
+        <td><%= menu_page.name %></td>
+        <td><%= menu_page.icon %></td>
+        <td><%= menu_page.access %></td>
+        <td><%= menu_page.link %></td>
+        <td><%= menu_page.block %></td>
+
+        <td>
+          <span><%= live_redirect "Показать", to: Routes.menu_page_show_path(@socket, :show, menu_page) %></span>
+          <span><%= live_patch "Редактировать", to: Routes.menu_page_index_path(@socket, :edit, menu_page) %></span>
+          <span><%= link "Удалить", to: "#", phx_click: "delete", phx_value_id: menu_page.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Page", to: Routes.menu_page_index_path(@socket, :new) %></span>

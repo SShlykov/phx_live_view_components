@@ -1,0 +1,39 @@
+<h1>Listing Coins</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, WDcrWeb.CoinbaseLive.FormComponent,
+    id: @coinbase.id || :new,
+    title: @page_title,
+    action: @live_action,
+    coinbase: @coinbase,
+    return_to: Routes.coinbase_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coin</th>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="coins">
+    <%= for coinbase <- @coins do %>
+      <tr id="coinbase-<%= coinbase.id %>">
+        <td><%= coinbase.coin_id %></td>
+        <td><%= coinbase.name %></td>
+        <td><%= coinbase.description %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.coinbase_show_path(@socket, :show, coinbase) %></span>
+          <span><%= live_patch "Edit", to: Routes.coinbase_index_path(@socket, :edit, coinbase) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: coinbase.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Coinbase", to: Routes.coinbase_index_path(@socket, :new) %></span>

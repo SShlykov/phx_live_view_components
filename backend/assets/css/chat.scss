@@ -1,0 +1,167 @@
+.chat{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 0 0 50px;
+    position: relative;
+    display: flex;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    &_room_block{
+        min-width: 300px;
+        border-top-left-radius: 10px;
+        border-right: 1px solid grey;
+        &>.rooms_list-wrapper{
+            max-height: 75vh;
+            height: 70vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            &>.rooms_list{
+                padding: 10px;
+                &>.rooms_list-item{
+                    list-style-type: none;
+                    padding: 10px 15px;
+                    margin: 0 10px;
+                    border-bottom: 1px solid lightgray;
+                    cursor: pointer;
+                    &>a{
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        text-decoration: none;
+                    }
+                    &.active{
+                        background-color: rgba($color: lightseagreen, $alpha: .3);
+                        box-shadow: 0px 2px 0px lightseagreen;
+                    }
+                }
+            }
+        }
+        &-title{
+            width: 100%;
+            border-bottom: 1px solid grey;
+            padding: 10px;
+            position: relative;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            &>h6{
+                font-size: 20px;
+            }
+        }
+        &-add_new,
+        &-find_existing{
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: none;
+            background-color: #fff;
+            cursor: pointer;
+            outline: none;
+            border-bottom: 1px solid white;
+            &:hover{
+                border-bottom: 1px solid grey;
+            }
+        }
+        &-find_existing{
+            right: 40px;
+        }
+    }
+    &_room_form{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        border-top: 1px solid grey;
+        &>form{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            &>button{
+                border: none;
+                margin: 5px 20px;
+                cursor: pointer;
+                outline: none;
+                font-size: 20px;
+                background-color: #fff;
+                &.disabled:hover{
+                    color: grey;
+                    cursor: not-allowed;
+                }
+                &:hover{
+                    color: orange;
+                }
+            }
+            &>input{
+                width: 100%;
+                font-size: 16px;
+                outline: none;
+                border: none;
+                border-right: 1px solid grey;
+                margin: 10px 0;
+                padding: 0 15px;
+                &.disabled{
+                    pointer-events: none;
+                    font-size: 12px;
+                    font-style: italic;
+                    text-shadow: grey 2px 0 10px;
+                }
+            }
+        }
+    }
+    &_room_messages{
+        width: 100%;
+        border-radius: 10px;
+        margin: 10px 1px 0 0;
+        position: relative;
+        &>.chat_room_messages-scroll_wrapper{
+            max-height: 75vh;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        &>.chat_title{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            min-height: 60px;
+            border-bottom: 1px solid lightgray;
+            padding: 5px 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: white;
+        }
+        &-list{
+            min-height: 75vh;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            padding: 10px 20px;
+            list-style-type: none;
+            &>.no-messages_msg{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: grey;
+                text-align: center;
+                font-style: italic;
+                text-shadow: lightgray 2px 0 20px;
+            }
+        }
+    }
+}
+
+.chat_namestring{
+    font-size: 13px;
+    &::before{
+        content: "chat-users:";
+    }
+}

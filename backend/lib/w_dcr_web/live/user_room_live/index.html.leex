@@ -1,0 +1,33 @@
+<h1>Listing User rooms</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, WDcrWeb.UserRoomLive.FormComponent,
+    id: @user_room.id || :new,
+    title: @page_title,
+    action: @live_action,
+    user_room: @user_room,
+    return_to: Routes.user_room_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="user_rooms">
+    <%= for user_room <- @user_rooms do %>
+      <tr id="user_room-<%= user_room.id %>">
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.room_show_path(@socket, :show, user_room) %></span>
+          <span><%= live_patch "Edit", to: Routes.room_index_path(@socket, :edit, user_room) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user_room.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New User room", to: Routes.room_index_path(@socket, :new) %></span>

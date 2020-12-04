@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= live_title_tag assigns[:page_title] || "WDcr", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-9ZfPnbegQSumzaE7mks2IYgHoayLtuto3AS6ieArECeaR8nCfliJVuLh/GaQ1gyM" crossorigin="anonymous">
+    <%= csrf_meta_tag() %>
+  </head>
+  <body>
+    <header>
+      <span class="main-title">Go <span class="deep-ocean">k8s </span> <span class="flame-color">Phoenix </span></span>
+      <nav role="navigation">
+        <ul>
+          <li><%= link "Main", to: if @conn.assigns[:current_user], do: "/home", else: Routes.page_path(@conn, :index) %></li>
+          <%= if @conn.assigns[:current_user] do %>
+            <li><%= link @current_user.first_name, to: Routes.live_path(@conn, UserLive.Show, @current_user) %></li>
+            <li><%= link "Log out", to: "/logout" %></li>
+          <% else %>
+            <li><%= link "Sign in", to: "/login" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+      <%= @inner_content %>
+    <script phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

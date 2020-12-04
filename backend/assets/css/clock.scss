@@ -1,0 +1,45 @@
+.dt-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dt-container div.dt-seconds{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dt-hours, .dt-minutes, .dt-seconds {
+  position: relative;
+  &>svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    &>rect{
+      stroke-width: 4px;
+    }
+  }
+}
+.dt-hours{
+  width: 280px;
+  height: 280px;
+}
+.dt-minutes{
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+.dt-seconds{
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+}
+
+.dt-hours>svg>rect{
+    stroke: darkcyan;
+}
+.dt-seconds>svg>rect{
+    stroke: darkkhaki;
+}
+.dt-minutes>svg>rect{
+    stroke: darksalmon;
+}

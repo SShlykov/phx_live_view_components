@@ -1,0 +1,46 @@
+<div class="session_screen">
+  <div class="auth_panel">
+    <h1>Sign in</h1>
+    <hr/>
+    <p style="margin-bottom: 10px">With login and password:</p>
+    <%= form_for @conn, Routes.session_path(@conn, :create), [method: :post, as: :user], fn f -> %>
+      <div class="form-group">
+        <%= text_input f, :email, placeholder: "Email", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= password_input f, :password, placeholder: "Password", class: "form-control" %>
+      </div>
+
+        <%= submit "go", class: "btn btn-primary" %>
+    <% end %>
+
+    <p><strong>No account yet? <%= link "Sign up", to: Routes.live_path(@conn, UserLive.New) %> for free!</strong></p>
+    <p><strong>Forgot your password? <%= link "Get", to: Routes.session_path(@conn, :forgot) %> a reset link.</strong></p>
+
+    <% form_for @conn, Routes.session_path(@conn, :delete), [method: :delete, as: :user], fn _ -> %>
+      <div class="form-group">
+        <%= submit "Log out", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <hr/>
+
+    <label style="label">Or signin with:</label>
+    <div id="gSignInWrapper">
+      <div id="customBtn" class="customGPlusSignIn">
+        <span class="icon"><img src="<%= Routes.static_url(@conn, "/images/ggl.png") %>"></span>
+        <span class="buttonText">Google</span>
+      </div>
+    </div>
+  </div>
+  <div class="full_screen_grad">
+    <div class="main_page_title">
+      <h1><%= gettext "%{name} Live View in k8s!", name: "Phoenix" %></h1>
+      <p>Это приложение содержит в себе целый ряд компонент, которые написаны с помощью Live View. С минимальным использованием JS.</p>
+    </div>
+    <div class="main_page_image">
+      <img src="<%= Routes.static_url(@conn, "/images/phoenix.png") %>" alt="phoenix">
+    </div>
+  </div>
+</div>

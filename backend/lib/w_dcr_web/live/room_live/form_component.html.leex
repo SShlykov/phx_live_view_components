@@ -1,0 +1,25 @@
+<div class="form-title">
+  <h3><%= @title %></h3>
+</div>
+
+
+<%= f = form_for @changeset, "#",
+  id: "room-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= select f, :user_sec, @users, placeholder: "id собеседника" %>
+  <%= error_tag f, :user_sec %>
+
+  <%= text_input f, :name, placeholder: "Название" %>
+  <%= error_tag f, :name %>
+
+  <%= text_input f, :description, placeholder: "Описание" %>
+  <%= error_tag f, :description %>
+
+  <%= text_input f, :icon_link, placeholder: "Ссылка на иконку" %>
+  <%= error_tag f, :icon_link %>
+
+  <%= submit "Создать", phx_disable_with: "Saving..." %>
+</form>

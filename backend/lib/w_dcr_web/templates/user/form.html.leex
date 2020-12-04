@@ -1,0 +1,27 @@
+<%= f = form_for @changeset, "#",
+  [phx_change: :validate, phx_submit: :save, phx_hook: "SavedForm"] %>
+
+  <%= label f, :first_name %>
+  <%= text_input f, :first_name, phx_debounce: "blur" %>
+  <%= error_tag f, :first_name %>
+
+  <%= label f, :last_name %>
+  <%= text_input f, :last_name, phx_debounce: "blur" %>
+  <%= error_tag f, :last_name %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email, phx_debounce: "blur" %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :password %>
+  <%= password_input f, :password, value: input_value(f, :password), phx_debounce: "blur" %>
+  <%= error_tag f, :password %>
+
+  <%= label f, :password_confirmation %>
+  <%= password_input f, :password_confirmation, value: input_value(f, :password_confirmation), phx_debounce: "blur" %>
+  <%= error_tag f, :password_confirmation %>
+
+  <div>
+    <%= submit "Save", phx_disable_with: "Saving..." %>
+  </div>
+</form>

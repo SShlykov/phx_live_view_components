@@ -1,0 +1,59 @@
+.coin_component{
+    border: 1px solid darkred;
+    border-radius: 5px;
+    width: 45%;
+    background-color: #000033;
+    color: white;
+    margin-bottom: 20px;
+    &-body{
+        max-height: 30vh;
+        height: 30vh;
+        overflow-x: hidden;
+        overflow: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        &>table{
+            margin-top: 0;
+            &>thead>tr>th{
+                padding: 5px 10px;
+            }
+            &>tbody{
+                max-height: 50px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                &>tr{
+                    &.sell{
+                        color: red;
+                    }
+                    &.buy{
+                        color: green;
+                    }
+                    &>td{
+                        padding: 3px 10px;
+                    }    
+                }
+            }
+        }
+    }
+    &>.coin_title{
+        min-height: 50px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid lightgray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &>.coin_title-title{
+            font-size: 1.2em;
+            padding: 10px 0 0;
+        }
+        &>.coin_title-description{
+            font-size: 0.9em;
+            color: lightgray;
+            padding: 5px;
+            padding-bottom: 10px;
+        }
+    }
+}

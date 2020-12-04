@@ -1,0 +1,41 @@
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <%= if @admin_user do %>
+      <th>Email</th>
+      <th>Is verified</th>
+      <th>Password hash</th>
+      <% end %>
+      <th>Website</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <%= if @admin_user do %>
+      <td><%= user.email %></td>
+      <td><%= user.is_verified %></td>
+      <td><%= user.password_hash %></td>
+      <% end %>
+      <td><%= user.email %></td>
+
+      <td>
+        <span><%= live_redirect "Show", to: Routes.live_path(@socket, UserLive.Show, user) %></span>
+        <%= if @admin_user do %>
+        <span><%= live_redirect "Edit", to: Routes.live_path(@socket, UserLive.Edit, user) %></span>
+        <span><%= live_redirect "Delete", to: "#",
+                    phx_click: "delete_user", phx_value_id: user.id %>
+        <% end %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= live_redirect "New User", to: Routes.live_path(@socket, UserLive.New) %></span>

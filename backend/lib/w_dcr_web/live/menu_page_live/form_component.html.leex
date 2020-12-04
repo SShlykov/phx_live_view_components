@@ -1,0 +1,30 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "menu_page-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :icon %>
+  <%= text_input f, :icon %>
+  <%= error_tag f, :icon %>
+
+  <%= label f, :link %>
+  <%= text_input f, :link %>
+  <%= error_tag f, :link %>
+
+  <%= label f, :block %>
+  <%= text_input f, :block %>
+  <%= error_tag f, :block %>
+
+  <%= label f, :access %>
+  <%= number_input f, :access %>
+  <%= error_tag f, :access %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>
