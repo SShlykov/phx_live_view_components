@@ -16,21 +16,21 @@ services:
             - .data/postgres/db:/var/lib/postgresql/data
             - .data/postgres/logs:/var/log/postgresql
             - .data/postgres/confs:/etc/postgresql
-    phoenix:
-        container_name: backend
-        build: 
-            context: ./backend
-            dockerfile: Dockerfile
-        stdin_open: true
-        restart: always
-        ports: 
-            - ${APP_HTTP_PORT}:${APP_HTTP_PORT}
-            - ${APP_HTTPS_PORT}:${APP_HTTPS_PORT}
-        volumes: 
-            - ./backend:/app
-        depends_on: 
-            - database
-        env_file:
-            - .env
-        command: sh -c "mix setup && mix phx.server"
+    # phoenix:
+    #     container_name: backend
+    #     build: 
+    #         context: ./backend
+    #         dockerfile: Dockerfile
+    #     stdin_open: true
+    #     restart: always
+    #     ports: 
+    #         - ${APP_HTTP_PORT}:${APP_HTTP_PORT}
+    #         - ${APP_HTTPS_PORT}:${APP_HTTPS_PORT}
+    #     # volumes: 
+    #     #     - ./backend:/app
+    #     depends_on: 
+    #         - database
+    #     env_file:
+    #         - .env
+    #     # command: sh -c "mix setup && mix phx.server"
           
