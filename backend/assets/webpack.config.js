@@ -17,12 +17,12 @@ module.exports = (env, options) => {
       ]
     },
     entry: {
-      'app': glob.sync('./vendor/**/*.js').concat(['./js/app.js']),
-      'webcam_app': glob.sync('./vendor/**/*.js').concat(['./js/webcam_app.js'])
+      'app': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
     },
     output: {
-      filename: '[name].js',
       path: path.resolve(__dirname, '../priv/static/js'),
+      chunkFilename: '[id].[hash:8].js',
+      filename: '[name].js',
       publicPath: '/js/'
     },
     devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
@@ -58,7 +58,7 @@ module.exports = (env, options) => {
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({ filename: '../css/app.css' }),
+      new MiniCssExtractPlugin({ filename: '../css/app.scss' }),
       new CopyWebpackPlugin([{ from: 'static/', to: '../' }])
     ]
     .concat(devMode ? [new HardSourceWebpackPlugin()] : [])

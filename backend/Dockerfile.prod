@@ -1,5 +1,5 @@
-ARG ALPINE_VERSION=3.11
-ARG ELIXIR_VERSION=1.10.4-alpine
+ARG ALPINE_VERSION=3.12
+ARG ELIXIR_VERSION=1.11.2-alpine
 
 FROM elixir:${ELIXIR_VERSION} as builder
 
@@ -25,7 +25,6 @@ RUN apk update && \
 
 COPY . .
 
-# Тут можно задать комады в mix.exs, а затем вызвать одной командой несколько (если есть работа с базой или особая работа с сервером, то можно было бы запустить, но пока загружаем пакеты elixir и node).
 RUN mix do deps.get --only prod, deps.compile, compile
 
 RUN if [ ! "$SKIP_PHOENIX" = "true" ]; then \
@@ -36,7 +35,6 @@ RUN if [ ! "$SKIP_PHOENIX" = "true" ]; then \
   mix phx.digest; \
 fi
 
-# Создадим себе папку, в которую поместим скомпилированный проект и распакуем его, чтобы в дальнейшем просто перенести его на сервер
 RUN mkdir -p /build  && \
     mix distillery.release --verbose && \
     cp _build/${MIX_ENV}/rel/${APP_NAME}/releases/${APP_VSN}/${APP_NAME}.tar.gz /build && \
@@ -46,14 +44,13 @@ RUN mkdir -p /build  && \
 
 FROM alpine:${ALPINE_VERSION}
 
-# Чтобы можно было работать с ssl внутри экосистемы elixir
 RUN apk update && \
     apk add --no-cache \
       bash \
-      openssl-dev
+      openssl-dev 
 
 WORKDIR /app
 
-COPY --from=builder /build .
+COPY --from=builder /build /app
 # TODO понять, как подсунуть переменную
 CMD ["/app/bin/w_dcr", "foreground"]

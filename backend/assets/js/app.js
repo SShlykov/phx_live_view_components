@@ -71,3 +71,9 @@ window.addEventListener("phx:page-loading-stop", info => NProgress.done())
 
 liveSocket.connect()
 window.liveSocket = liveSocket
+
+import "../css/video_chat.scss"
+import socket from './socket'
+
+import {hasCameraElement, setupWebcamAndDetection} from "./webcam"
+if(hasCameraElement()) setupWebcamAndDetection(socket);
