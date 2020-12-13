@@ -16,8 +16,15 @@ Also some more components like
 
 Unfortunately, I did not find a nice and beauty case to transfer volumes data for postgres container. Therefore, in order to run practically the same application on ***windows*** system (bcs of difference in access rights), so you need to ***comment out the volumes*** in the docker-compose file. Unfortunately, because of this, you can lose the entered data on restart -->
 
-***sorry docker is broken for now***
+***Docker compose only works without object recognition as installation in docker ecosystem takes about 40 minutes***
+```bash
+# docker and docker-compose should be installed in your system
+docker-compose up --build
+```
 
+
+
+***Manual installation***
 ***pre install***
 ```bash
 #we need yolo (python -> conda), postgres db and elixir installed in your system 
@@ -25,6 +32,7 @@ Unfortunately, I did not find a nice and beauty case to transfer volumes data fo
 # postgres instruction: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-20-04
 # python instruction: https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-18-04
 # conda instructions: https://docs.conda.io/projects/conda/en/latest/user-guide/install/
+# please ensure that "conda inited"
 # then we need to create yolo env and install following packages:
 conda create -n yolo python={python version}
 conda activate yolo
