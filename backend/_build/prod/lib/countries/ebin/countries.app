@@ -1,0 +1,10 @@
+{application,countries,
+             [{applications,[kernel,stdlib,elixir,logger,yamerl]},
+              {description,"Countries is a collection of all sorts of useful information for every country in the [ISO 3166](https://de.wikipedia.org/wiki/ISO_3166) standard.\n"},
+              {modules,['Elixir.Countries','Elixir.Countries.Country',
+                        'Elixir.Countries.Loader',
+                        'Elixir.Countries.Subdivision',
+                        'Elixir.Countries.Subdivisions',
+                        'Elixir.Countries.Utils']},
+              {registered,[]},
+              {vsn,"1.6.0"}]}.

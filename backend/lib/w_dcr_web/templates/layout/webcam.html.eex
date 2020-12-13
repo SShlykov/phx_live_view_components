@@ -15,6 +15,7 @@
     <main role="main" class="container <%= Enum.at(@conn.path_info, 0) %>">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <h1>Этот модуль работает только с python окрижением, которое отсутствует в docker образе из-за чрезвычайно долгой загрузки</h1>
         <button id="start_stop">Start</button>
         <div class="camera_container scaled-camera">
             <div id="camera"></div>

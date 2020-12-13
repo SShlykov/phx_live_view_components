@@ -63,6 +63,7 @@ defmodule WDcrWeb.ImageUploadLive do
     <div class="main-centred">
       <div>
         <div class="main">
+          <h1>Этот модуль работает только с python окрижением, которое отсутствует в docker образе из-за чрезвычайно долгой загрузки</h1>
           <div class="container" phx-drop-target="<%= @uploads.images.ref %>">
 
             <form phx-change="update" phx-submit="generate_yolo" on-click="(e) => e.prventDefault()">

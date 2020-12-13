@@ -79,7 +79,7 @@ defmodule WDcr.MixProject do
       "frontend.setup": ["cmd npm install --prefix assets"],
       "db.setup": ["ecto.migrate"],
       "ecto.reset": ["ecto.drop", "ecto.create", "ecto.migrate", "run priv/repo/seed.exs"],
-      setup: ["deps.get", "ecto.reset", "frontend.setup"]
+      setup: ["deps.get", "ecto.migrate", "frontend.setup"]
     ]
   end
 end
