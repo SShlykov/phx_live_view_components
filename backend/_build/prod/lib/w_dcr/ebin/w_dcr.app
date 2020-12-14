@@ -6,7 +6,7 @@
                              plug_cowboy,phoenix_ecto,ecto_sql,postgrex,
                              distillery,shorter_maps,tesla,nimble_strftime,
                              scrivener_ecto,comeonin,argon2_elixir,morphix,
-                             timex,uuid,countries]},
+                             timex,uuid,countries,ecto_psql_extras]},
               {description,"w_dcr"},
               {modules,['Elixir.Coinbase.Client','Elixir.Helper.Utils',
                         'Elixir.WDcr','Elixir.WDcr.Accounts',

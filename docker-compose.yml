@@ -16,6 +16,7 @@ services:
             - .data/postgres/db:/var/lib/postgresql/data
             - .data/postgres/logs:/var/log/postgresql
             - .data/postgres/confs:/etc/postgresql
+
     phoenix:
         container_name: backend
         build: 
@@ -32,5 +33,5 @@ services:
             - database
         env_file:
             - .env
-        command: sh -c "mix ecto.reset && mix phx.server"
+        command: sh -c "yes | mix ecto.reset && mix phx.server"
           

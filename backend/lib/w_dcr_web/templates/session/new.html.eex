@@ -15,8 +15,8 @@
         <%= submit "go", class: "btn btn-primary" %>
     <% end %>
 
-    <p><strong>No account yet? <%= link "Sign up", to: Routes.live_path(@conn, UserLive.New) %> for free!</strong></p>
-    <p><strong>Forgot your password? <%= link "Get", to: Routes.session_path(@conn, :forgot) %> a reset link.</strong></p>
+    <p><strong>No account yet? <%= link "Sign up", to:  "#" %> for free!</strong></p>
+    <p><strong>Forgot your password? <%= link "Get", disabled: true, to: "#" %> a reset link.</strong></p>
 
     <% form_for @conn, Routes.session_path(@conn, :delete), [method: :delete, as: :user], fn _ -> %>
       <div class="form-group">

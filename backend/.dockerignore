@@ -4,3 +4,4 @@ node_modules
 .elixir_ls
 Dockerfile
 package-lock.json
+*.lock

@@ -70,7 +70,8 @@ defmodule WDcr.MixProject do
       {:morphix, "~> 0.8.0"},
       {:timex, "~> 3.5"},
       {:uuid, "~> 1.1"},
-      {:countries, "~> 1.6"}
+      {:countries, "~> 1.6"},
+      {:ecto_psql_extras, "~> 0.2"},
     ]
   end
 

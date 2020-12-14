@@ -129,4 +129,13 @@ defmodule WDcrWeb.Router do
 
     live "/snake", SnakeLive
   end
+
+  scope "/resources" do
+    pipe_through [:fetch_session, :protect_from_forgery]
+    import Phoenix.LiveDashboard.Router
+    live_dashboard "/",
+      metrics: WDcrWeb.Telemetry,
+      ecto_repos: [WDcr.Repo]
+  end
+
 end
